@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PG游戏 · 轻巧导航介绍页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+      background-color: #f9f6f0;
+      color: #2e2b26;
+      line-height: 1.7;
+      padding: 1.5rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #fffcf7;
+      border-radius: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      padding: 2rem 2.5rem;
+    }
+
+    /* 顶部导航 */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid #e6ddce;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: #4f3b2c;
+    }
+
+    .logo-icon {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      background: #dac29c;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      color: #5f4c3a;
+      text-decoration: none;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #b3926e;
+    }
+
+    /* hero 简短引入 */
+    .hero-wrap {
+      margin-bottom: 3rem;
+    }
+
+    .hero-wrap h1 {
+      font-size: 2.2rem;
+      font-weight: 450;
+      letter-spacing: 0.02em;
+      color: #3b2d1f;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-wrap p {
+      font-size: 1.05rem;
+      color: #584b3b;
+      max-width: 80%;
+    }
+
+    @media (max-width: 550px) {
+      .hero-wrap p {
+        max-width: 100%;
+      }
+    }
+
+    /* 核心介绍区 */
+    .intro-card {
+      background: #f5ede2;
+      padding: 1.8rem 2.2rem;
+      border-radius: 28px;
+      margin-bottom: 2.8rem;
+      border-left: 6px solid #cbb295;
+    }
+
+    .intro-card p {
+      margin-bottom: 0.9rem;
+    }
+
+    .intro-card a {
+      color: #7b5c3d;
+      text-decoration: underline wavy #dcc8b0 1px;
+      text-underline-offset: 4px;
+      font-weight: 500;
+    }
+
+    .intro-card a:hover {
+      background: #eaddce;
+      text-decoration: none;
+    }
+
+    /* 三个场景模块 */
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 700px) {
+      .scenes-grid {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+    }
+
+    .scene-item {
+      background: #fcf8f2;
+      border-radius: 24px;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      transition: all 0.2s ease;
+      border: 1px solid #efe6db;
+    }
+
+    .scene-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.03);
+      border-color: #dac6b0;
+    }
+
+    .scene-item h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+      color: #4b3929;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .scene-item h3::before {
+      content: "·";
+      font-weight: bold;
+      color: #b3916b;
+      font-size: 1.8rem;
+    }
+
+    .scene-item p {
+      font-size: 0.95rem;
+      color: #4f4236;
+    }
+
+    /* 提示框 */
+    .highlight-box {
+      background: #ede5d8;
+      border-radius: 20px;
+      padding: 1.5rem 2rem;
+      margin: 2.5rem 0;
+      border-left: 8px solid #a08463;
+      font-style: normal;
+    }
+
+    .highlight-box .label {
+      display: inline-block;
+      font-weight: 500;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #7f654b;
+      margin-bottom: 0.5rem;
+    }
+
+    /* FAQ 摘要 */
+    .faq-mini {
+      margin-top: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .faq-mini h2 {
+      font-size: 1.4rem;
+      font-weight: 450;
+      color: #3a2d20;
+      margin-bottom: 1.2rem;
+      border-bottom: 2px solid #e7dccc;
+      padding-bottom: 0.4rem;
+    }
+
+    .faq-item {
+      padding: 0.9rem 0;
+      border-bottom: 1px dashed #e2d5c4;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-weight: 500;
+      color: #4f3d2b;
+    }
+
+    .faq-answer {
+      margin-top: 0.2rem;
+      color: #5f5142;
+      font-size: 0.95rem;
+    }
+
+    .faq-answer a {
+      color: #7a6246;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* 底部 */
+    .footer-note {
+      margin-top: 2.8rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #e1d3c1;
+      font-size: 0.85rem;
+      color: #786b5b;
+      text-align: center;
+    }
+
+    .footer-note a {
+      color: #5f4c36;
+      text-decoration: none;
+      border-bottom: 1px dotted;
+    }
+
+    .footer-note a:hover {
+      border-bottom-style: solid;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 420px) {
+      .container {
+        padding: 1rem 1.2rem;
+      }
+      .hero-wrap h1 {
+        font-size: 1.8rem;
+      }
+      .intro-card {
+        padding: 1.2rem 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  
+  <!-- 顶部导航 -->
+  <nav class="top-nav">
+    <div class="logo-area">
+      <span class="logo-icon"></span>
+      <span>PG·指南</span>
+    </div>
+    <div class="nav-links">
+      <a href="#intro">介绍</a>
+      <a href="#scenes">场景</a>
+      <a href="#faq">说明</a>
+    </div>
+  </nav>
+
+  <!-- hero 区域 -->
+  <div class="hero-wrap">
+    <h1>在放松与体验之间，<br>找到一种简单的节奏</h1>
+    <p>周末午后、通勤间隙、晚间独处——游戏不该是负担，而是一段轻巧的沉浸。围绕 <strong>PG游戏</strong> 的日常场景，我们整理了一些可供参考的片段。</p>
+  </div>
+
+  <!-- 核心介绍 嵌入链接 -->
+  <div class="intro-card" id="intro">
+    <p><strong>什么是 PG 游戏？</strong> 它不是一个平台，也不是某个具体产品，而是一种偏向休闲、画面明快、上手门槛较低的游戏类型统称。很多人会在零碎时间里打开一局 <a href="https://app2-pggame.com">PG游戏</a>，不求连胜，只图一点小小的解压。这类游戏往往规则直接、反馈及时，比较适合不想投入太多脑力又想获得即时乐趣的人。</p>
+    <p>无论你是第一次听说，还是已经接触过一段时间，这里的几个方向或许能帮你更自在地进入状态。</p>
+  </div>
+
+  <!-- 三个场景模块 -->
+  <div class="scenes-grid" id="scenes">
+    <div class="scene-item">
+      <h3>通勤路上的轻回合</h3>
+      <p>等地铁、排咖啡、午休前几分钟——不需要耳机，不需要教程，打开就能玩一局。没有连续剧情的压力，随时暂停也不心疼。</p>
+    </div>
+    <div class="scene-item">
+      <h3>朋友间的随意互动</h3>
+      <p>有时聚会大家各看手机，不如一起开两局 PG 游戏。比手速、比运气，输的人请奶茶，气氛自然热闹起来。</p>
+    </div>
+    <div class="scene-item">
+      <h3>睡前的放松收尾</h3>
+      <p>一天忙完，大脑还在兴奋？挑个画面舒服、节奏缓慢的 PG 游戏，不用动太多脑筋，玩上十分钟，慢慢放下手机。</p>
+    </div>
+  </div>
+
+  <!-- 温馨提示 / 引用块 -->
+  <div class="highlight-box">
+    <span class="label">💡 一点提醒</span>
+    <p>任何好玩的游戏，适度才是长久之道。给自己设个简单的计时提醒，或者打完一局就起身走走。把 PG 游戏当作生活里的小点缀，而不是全部。</p>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini" id="faq">
+    <h2>常见疑问 · 简短说明</h2>
+    <div class="faq-item">
+      <div class="faq-question">Q：PG 游戏需要付费才能玩吗？</div>
+      <div class="faq-answer">大部分 PG 类游戏提供免费试玩或低门槛体验，具体看游戏本身设定。可以先去 <a href="https://app2-pggame.com">PG游戏</a> 页面浏览一下，通常会有清晰说明。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Q：对设备要求高吗？</div>
+      <div class="faq-answer">门槛很低。一般智能手机或电脑浏览器就能流畅运行，不需要高性能硬件。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Q：有年龄限制吗？</div>
+      <div class="faq-answer">多数 PG 游戏为全年龄段设计，但具体到个别题材可能略有不同。建议家长稍作留意。</div>
+    </div>
+  </div>
+
+  <!-- 底部 -->
+  <div class="footer-note">
+    <span>关于 <a href="https://app2-pggame.com">PG游戏</a> 的轻导航 · 仅为信息整理 · 无诱导倾向</span>
+  </div>
+
+</div>
+</body>
+</html>
